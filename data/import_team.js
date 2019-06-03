@@ -1,3 +1,4 @@
+var Promise = require('bluebird');
 var csv = require('csv-parser');
 var fs = require('fs');
 const Event = require('../models').Event
@@ -16,87 +17,96 @@ fs.createReadStream('./data/olympic_data_2016.csv')
   .on('end', () => {
     console.log("end")
   });
+//
+//
+// var addTeams = function(results) {
+//   var i;
+//   for (i=0; i < results.length; i++) {
+//     Team.findOrCreate({
+//       where: {
+//         name: results[i].Team
+//       }
+//     })
+//     .then(team => {
+//       console.log(team)
+//     })
+//   }
+// }
 
-
-var addTeams = function(results) {
+var importData = () => {
   var i;
-  for (i=0; i < results.length; i++) {
-    Team.findOrCreate({
-      where: {
-        name: results[i].Team
-      }
-    })
-    .then(team => {
-      console.log(team)
-    })
+  var j;
+  console.log("Importing data...")
+  const iterationFunction = (row) => {
+    for (i=0; i < results.length; i++) {
+      let team = results[i].Team
+      let event = results[i].Event
+      let sport = results[i].Sport
+      let name = results[i].Name
+      let sex = results[i].Sex
+      let age = parseInt(results[i].Age)
+      let height = parseInt(results[i].Height)
+      let weight = parseInt(results[i].Weight)
+      let medal = results[i].Medal
+      let event_id;
+      let team_id;
+      let olympian_id;
+      Sport.findOrCreate({
+        where: {
+          name: sport
+        }
+      })
+      .then(sport => {
+        sport_id = sport[0].id
+        return Event.findOrCreate({
+          where: {
+            name: event,
+            SportId: sport_id
+          }
+        })
+      })
+      .then(event => {
+        event_id = event[0].id
+        return Team.findOrCreate({
+          where:{
+            name: team
+          }
+        })
+      })
+      .then(team =>{
+        team_id = team[0].id
+        return Olympian.findOrCreate({
+          where:{
+            name: name,
+            age: age,
+            weight: weight,
+            height: height,
+            sex: sex,
+            TeamId: team_id,
+            SportId: sport_id
+          }
+        })
+      })
+      .then(olympian => {
+        olympian_id = olympian[0].id
+        return OlympianEvent.findOrCreate({
+          where: {
+            OlympianId: olympian_id,
+            EventId: event_id,
+            medal: medal
+          }
+        })
+      })
+    }
   }
-}
 
-var addSportsEvents = function(results) {
-  var i;
-  for (i=0; i < results.length; i++) {
-    let team = results[i].Team
-    let event = results[i].Event
-    let sport = results[i].Sport
-    let name = results[i].Name
-    let sex = results[i].Sex
-    let age = parseInt(results[i].Age)
-    let height = parseInt(results[i].Height)
-    let weight = parseInt(results[i].Weight)
-    let medal = results[i].Medal
-    let event_id;
-    let team_id;
-    let olympian_id;
-    Sport.findOrCreate({
-      where: {
-        name: sport
-      }
-    })
-    .then(sport => {
-      sport_id = sport[0].id
-      return Event.findOrCreate({
-        where: {
-          name: event,
-          SportId: sport_id
-        }
-      })
-    })
-    .then(event => {
-      event_id = event[0].id
-      return Team.findOrCreate({
-        where:{
-          name: team
-        }
-      })
-    })
-    .then(team =>{
-      team_id = team[0].id
-      return Olympian.findOrCreate({
-        where:{
-          name: name,
-          age: age,
-          weight: weight,
-          height: height,
-          sex: sex,
-          TeamId: team_id,
-          SportId: sport_id
-        }
-      })
-    })
-    .then(olympian => {
-      olympian_id = olympian[0].id
-      return OlympianEvent.findOrCreate({
-        where: {
-          OlympianId: olympian_id,
-          EventId: event_id,
-          medal: medal
-        }
-      })
-    })
-  }
-}
+  Promise.map(results, iterationFunction, { concurrency: 100 });
+
+};
 
 eval(pry.it)
+
+
 
   //
   //
