@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "teresaknowles",
+    "password": null,
+    "database": "olympics_analytics_api_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "teresaknowles",
+    "password": null,
+    "database": "olympics_analytics_api_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "teresaknowles",
+    "password": null,
+    "database": "olympics_analytics_api_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
