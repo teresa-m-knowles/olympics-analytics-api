@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     SportId: DataTypes.INTEGER
   }, {});
   Event.associate = function(models) {
-    Event.belongsTo(models.Sport);
+    Event.belongsTo(models.Sport)
+    Event.hasMany(models.OlympianEvent)
+    Event.belongsToMany(models.Olympian, {through: 'OlympianEvent'})
   };
   return Event;
 };

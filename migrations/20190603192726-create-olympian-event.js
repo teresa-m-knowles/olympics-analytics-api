@@ -1,21 +1,31 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Events', {
+    return queryInterface.createTable('OlympianEvents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      medal: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.ENUM('NA', 'Gold', 'Silver', 'Bronze')
       },
-      SportId: {
+      OlympianId: {
         type: Sequelize.INTEGER,
         references: {
-        model: 'Sports',
+        model: 'Olympians',
+        key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL',
+      allowNull: false
+      },
+      EventId: {
+        type: Sequelize.INTEGER,
+        references: {
+        model: 'Events',
         key: 'id'
       },
       onUpdate: 'CASCADE',
@@ -33,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Events');
+    return queryInterface.dropTable('OlympianEvents');
   }
 };

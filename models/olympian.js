@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Olympian.associate = function(models) {
     Olympian.belongsTo(models.Team)
+    Olympian.belongsTo(models.Sport)
+    Olympian.hasMany(models.OlympianEvent)
+    Olympian.belongsToMany(models.Event, {through: 'OlympianEvent'});
+
 
   };
   return Olympian;

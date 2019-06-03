@@ -9,18 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       sex: {
+        allowNull: false,
         type: Sequelize.ENUM('F', 'M')
       },
       age: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       height: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       weight: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       SportId: {
