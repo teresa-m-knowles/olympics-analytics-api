@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Sport.associate = function(models) {
     Sport.hasMany(models.Event);
+    Sport.hasMany(models.Olympian);
   };
   return Sport;
 };
