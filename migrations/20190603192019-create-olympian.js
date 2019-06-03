@@ -10,11 +10,12 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       sex: {
         allowNull: false,
-        type: Sequelize.ENUM('F', 'M')
+        type: Sequelize.STRING
       },
       age: {
         allowNull: false,

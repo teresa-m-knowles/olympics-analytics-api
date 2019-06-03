@@ -2,12 +2,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Olympian = sequelize.define('Olympian', {
     name: DataTypes.STRING,
-    sex: DataTypes.ENUM,
+    sex: DataTypes.STRING,
     age: DataTypes.INTEGER,
     height: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
     TeamId: DataTypes.INTEGER,
-    SportId: DataTypes.Integer
+    SportId: DataTypes.INTEGER
   }, {});
   Olympian.associate = function(models) {
     Olympian.belongsTo(models.Team)

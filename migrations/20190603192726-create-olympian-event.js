@@ -10,7 +10,7 @@ module.exports = {
       },
       medal: {
         allowNull: false,
-        type: Sequelize.ENUM('NA', 'Gold', 'Silver', 'Bronze')
+        type: Sequelize.STRING
       },
       OlympianId: {
         type: Sequelize.INTEGER,
