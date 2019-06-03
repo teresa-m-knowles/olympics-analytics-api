@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Team.associate = function(models) {
-    // associations can be defined here
+    Team.hasMany(models.Olympian)
   };
   return Team;
 };
