@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     SportId: DataTypes.INTEGER
   }, {});
   Olympian.associate = function(models) {
-    Olympian.belongsTo(models.Team)
-    Olympian.belongsTo(models.Sport)
+    Olympian.belongsTo(models.Team, {foreignKey: 'TeamId', as: 'team'})
+    Olympian.belongsTo(models.Sport, {foreignKey: 'SportId', as: 'sport'})
     Olympian.hasMany(models.OlympianEvent)
     Olympian.belongsToMany(models.Event, {through: 'OlympianEvent'});
 
