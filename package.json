@@ -6,11 +6,13 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bluebird": "^3.5.5",
     "cookie-parser": "~1.4.4",
     "csv": "^5.1.1",
     "csv-parser": "^2.3.0",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "fast-csv": "^2.5.0",
     "morgan": "~1.9.1",
     "pg": "^7.11.0",
     "pryjs": "^1.0.3",
