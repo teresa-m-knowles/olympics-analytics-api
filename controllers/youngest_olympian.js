@@ -5,8 +5,8 @@ var OlympianEvent = require('../models').OlympianEvent
 const sequelize = require('sequelize');
 const op = sequelize.Op;
 
-module.exports = class AllOlympiansController {
-  static index(request, response) {
+module.exports = class YoungestController {
+  static show(request, response) {
     response.setHeader("Content-Type", "application/json");
     Olympian.findAll({
       raw: true,
@@ -34,12 +34,13 @@ module.exports = class AllOlympiansController {
         required: false
       }
     ],
-      group: ['Olympian.id', 'sport.id', 'team.id' ]
+      group: ['Olympian.id', 'sport.id', 'team.id' ],
+      order: ['age']
 
     })
-      .then(olympians => {
-        response.status(200).send(JSON.stringify({olympians: olympians}))
-      })
-  }
-
+    .then(olympians => {
+      let first = olympians[0]
+      response.status(200).send(JSON.stringify([first]))
+    })
+}
 }
