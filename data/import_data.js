@@ -62,11 +62,6 @@ let csvStream = csv.fromPath("./data/olympic_data_2016.csv", {headers: true})
           }
         }).then(olympian => {
           olympian_id = olympian[0].id
-          console.log("Got here")
-          console.log(medal)
-          console.log(event_id)
-          console.log(olympian_id)
-          // console.log(olympian)
           OlympianEvent.findOrCreate({
             where:{
               medal: medal,
@@ -74,8 +69,6 @@ let csvStream = csv.fromPath("./data/olympic_data_2016.csv", {headers: true})
               OlympianId: olympian_id
             }
           }).then(olympian_event => {
-            console.log("Got to then")
-            console.log(olympian_event)
           })
           .catch(error => {
             console.log(error)
