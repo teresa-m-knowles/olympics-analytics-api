@@ -23,11 +23,11 @@ module.exports = {
       },
       height: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       weight: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       SportId: {
         type: Sequelize.INTEGER,

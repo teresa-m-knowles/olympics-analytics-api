@@ -100,7 +100,7 @@ var importData = () => {
     }
   }
 
-  Promise.map(results, iterationFunction, { concurrency: 100 });
+  Promise.map(results, iterationFunction, { concurrency: 6000 });
 
 };
 

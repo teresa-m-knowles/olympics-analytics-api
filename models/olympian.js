@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     sex: DataTypes.STRING,
     age: DataTypes.INTEGER,
-    height: DataTypes.INTEGER,
-    weight: DataTypes.INTEGER,
+    height: DataTypes.STRING,
+    weight: DataTypes.STRING,
     TeamId: DataTypes.INTEGER,
     SportId: DataTypes.INTEGER
   }, {});
