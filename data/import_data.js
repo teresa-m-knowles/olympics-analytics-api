@@ -85,7 +85,7 @@ let csvStream = csv.fromPath("./data/olympic_data_2016.csv", {headers: true})
       })
     })
   });
-  
+
   counter ++;
   csvStream.resume();
 })
