@@ -7,6 +7,12 @@ This is the final project of module 4 of the Turing School of Software and Desig
 The specific requirements can be found [here](https://github.com/dionew1/backend-curriculum-site/blob/gh-pages/module4/projects/take_home_challenge/prompts/olympic_spec.md). 
 
 
+## Database Schema
+
+
+<img width="1222" alt="Screen Shot 2019-06-04 at 9 44 31 PM" src="https://user-images.githubusercontent.com/13354855/58928956-3ea46d80-8744-11e9-8923-d44b5bfdfaca.png">
+
+
 ## Endpoints
 
 ### 1. Get all Olympians
@@ -367,6 +373,8 @@ GET api/v1/olympians
   
   ```
   </details>
+  
+  
 
   
 
