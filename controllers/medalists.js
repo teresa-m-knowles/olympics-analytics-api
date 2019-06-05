@@ -40,7 +40,7 @@ module.exports = class MedalistsController {
                   name: olympian_event['Olympian.name'],
                   team:olympian_event['Olympian.team.name'],
                   age:olympian_event['Olympian.age'],
-                  meda:olympian_event.medal,
+                  medal:olympian_event.medal,
                 }
                 return formattedResult
               })
