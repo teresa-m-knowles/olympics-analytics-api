@@ -1,7 +1,13 @@
+require('dotenv').config();
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+const expressGraphQL = require('express-graphql');
+const schema = require('./schema/schema');
+
 
 var indexRouter = require('./routes/index');
 var olympiansRouter = require('./routes/api/v1/olympians');
@@ -20,5 +26,10 @@ app.use('/', indexRouter);
 app.use('/api/v1/olympians', olympiansRouter)
 app.use('/api/v1/olympian_stats', statsRouter)
 app.use('/api/v1/events', eventsRouter)
+
+app.use('/graphql', expressGraphQL({
+  schema,
+  graphiql: true
+}));
 
 module.exports = app;
