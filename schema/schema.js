@@ -13,6 +13,19 @@ const {
 
 // types
 // root query
+
+const RootQuery = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {
+    olympian: {
+      type: GraphQLList,
+      args: {id: {type: GraphQLString}},
+      resolve(parentValue, args) {
+        return axios.get(``)
+      }
+    }
+  }
+})
 // mutations
 
 module.exports = new GraphQLSchema({

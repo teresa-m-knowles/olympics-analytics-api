@@ -26,8 +26,11 @@ app.use('/api/v1/olympian_stats', statsRouter)
 app.use('/api/v1/events', eventsRouter)
 
 app.use('/graphql', expressGraphQL({
-  schema,
+  schema: schema,
   graphiql: true
 }));
+
+app.listen(4000);
+console.log('Running a GraphQL API server at localhost:4000/graphql');
 
 module.exports = app;
