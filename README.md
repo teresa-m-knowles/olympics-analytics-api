@@ -1,11 +1,28 @@
 # Olympics Analytics API
 
+## Introduction
 This is the final project of module 4 of the Turing School of Software and Design. The purpose of the project was to simulate a take home challenge from a company as part of the interview process. 
 
 > Thank you for taking the time to apply to our Junior Developer position here at Koroibos. Our company is currently working to build a live Olympic Analytics tracker for the 2020 Summer Games. As part of our application, we want to include historical data from the 2016 Summer Olympics. We have provided you a sample of the data here. For your technical challenge, we would like to see you use this data to build out some analytical endpoints using Node and Express. We have provided specifications for the endpoints that we are looking for, and would love to see your initiative for any other endpoints you think could provide interesting data analysis. We will meet on Wednesday to discuss your process, decisions, and code quality. Looking forward to our review!
 
 The specific requirements can be found [here](https://github.com/dionew1/backend-curriculum-site/blob/gh-pages/module4/projects/take_home_challenge/prompts/olympic_spec.md). 
 
+## Initial setup
+
+```
+$ git clone https://github.com/teresa-m-knowles/olympics-analytics-api.git
+$ cd olympics-analytics-api
+$ npm install
+$ npx sequelize db:create
+$ npx sequelize db:migrate
+$ node data/import_data.js
+```
+
+## Tech Stack List
+- Node JS
+- Express
+- Sequelize
+- PostgreSQL
 
 ## Database Schema
 
