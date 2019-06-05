@@ -1,5 +1,7 @@
 # Olympics Analytics API
 
+Project is deployed [here](https://stormy-harbor-42337.herokuapp.com)
+
 ## Introduction
 This is the final project of module 4 of the Turing School of Software and Design. The purpose of the project was to simulate a take home challenge from a company as part of the interview process. 
 
