@@ -3,6 +3,7 @@ var Sport = require('../models').Sport
 var Team = require('../models').Team
 var OlympianEvent = require('../models').OlympianEvent
 const sequelize = require('sequelize');
+pry = require('pryjs')
 const op = sequelize.Op;
 
 module.exports = class AllOlympiansController {
@@ -38,8 +39,21 @@ module.exports = class AllOlympiansController {
 
     })
       .then(olympians => {
-        response.status(200).send(JSON.stringify({olympians: olympians}))
-      })
-  }
+        return olympians.map(olympian => {
+          let formattedOlympian =
+            {
+              name: olympian.name,
+              team: olympian['team.name'],
+              age: olympian.age,
+              sport: olympian['sport.name'],
+              total_medals_won: olympian.total_medals_won
+            };
 
-}
+     return formattedOlympian
+    })
+  })
+    .then(formattedOlympians => {
+      response.status(200).send(JSON.stringify({olympians: formattedOlympians}))
+    })
+      }
+  }
