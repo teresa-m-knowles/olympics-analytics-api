@@ -44,8 +44,6 @@ module.exports = class MedalistsController {
                 }
                 return formattedResult
               })
-              eval(pry.it)
-
             })
             .then(formattedResults => {
               response.status(200).send(JSON.stringify({
